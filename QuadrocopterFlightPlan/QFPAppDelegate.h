@@ -1,12 +1,15 @@
 //
-//  QFPAppDelegate.h
-//  QuadrocopterFlightPlan
+//  AppDelegate.h
+//  ARDrone
 //
-//  Created by Cezar Cocu on 5/1/14.
-//  Copyright (c) 2014 Cezar Cocu, Ahmed Shaikh. All rights reserved.
+//  Created by Chris Eidhof on 29.12.13.
+//  Copyright (c) 2013 Chris Eidhof. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+
+@class DroneCommunicator;
+@class ViewController;
 
 @interface QFPAppDelegate : UIResponder <UIApplicationDelegate>
 

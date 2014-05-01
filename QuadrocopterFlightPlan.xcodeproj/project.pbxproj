@@ -12,13 +12,23 @@
 		F7BCAA841912C896002336F6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BCAA831912C896002336F6 /* UIKit.framework */; };
 		F7BCAA8A1912C896002336F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7BCAA881912C896002336F6 /* InfoPlist.strings */; };
 		F7BCAA8C1912C896002336F6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BCAA8B1912C896002336F6 /* main.m */; };
-		F7BCAA901912C896002336F6 /* QFPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BCAA8F1912C896002336F6 /* QFPAppDelegate.m */; };
 		F7BCAA921912C896002336F6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7BCAA911912C896002336F6 /* Images.xcassets */; };
 		F7BCAA991912C896002336F6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BCAA981912C896002336F6 /* XCTest.framework */; };
 		F7BCAA9A1912C896002336F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BCAA7F1912C896002336F6 /* Foundation.framework */; };
 		F7BCAA9B1912C896002336F6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BCAA831912C896002336F6 /* UIKit.framework */; };
 		F7BCAAA31912C896002336F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7BCAAA11912C896002336F6 /* InfoPlist.strings */; };
 		F7BCAAA51912C896002336F6 /* QuadrocopterFlightPlanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BCAAA41912C896002336F6 /* QuadrocopterFlightPlanTests.m */; };
+		F7BCAAC21912C998002336F6 /* CLLocation+ObjcioHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BCAAAF1912C998002336F6 /* CLLocation+ObjcioHelpers.m */; };
+		F7BCAAC31912C998002336F6 /* DatagramSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BCAAB11912C998002336F6 /* DatagramSocket.m */; };
+		F7BCAAC41912C998002336F6 /* DroneCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BCAAB31912C998002336F6 /* DroneCommunicator.m */; };
+		F7BCAAC51912C998002336F6 /* DroneController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BCAAB51912C998002336F6 /* DroneController.m */; };
+		F7BCAAC61912C998002336F6 /* DroneNavigationState.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BCAAB71912C998002336F6 /* DroneNavigationState.m */; };
+		F7BCAAC71912C998002336F6 /* Navigator.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BCAAB91912C998002336F6 /* Navigator.m */; };
+		F7BCAAC91912C998002336F6 /* RemoteClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BCAABC1912C998002336F6 /* RemoteClient.m */; };
+		F7BCAACA1912C998002336F6 /* RemoteControlCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BCAABE1912C998002336F6 /* RemoteControlCommand.m */; };
+		F7BCAACB1912C998002336F6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BCAAC01912C998002336F6 /* ViewController.m */; };
+		F7BCAACC1912C998002336F6 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7BCAAC11912C998002336F6 /* ViewController.xib */; };
+		F7BCAACF1912C9FF002336F6 /* QFPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BCAACE1912C9FF002336F6 /* QFPAppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,14 +50,33 @@
 		F7BCAA891912C896002336F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F7BCAA8B1912C896002336F6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F7BCAA8D1912C896002336F6 /* QuadrocopterFlightPlan-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuadrocopterFlightPlan-Prefix.pch"; sourceTree = "<group>"; };
-		F7BCAA8E1912C896002336F6 /* QFPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QFPAppDelegate.h; sourceTree = "<group>"; };
-		F7BCAA8F1912C896002336F6 /* QFPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QFPAppDelegate.m; sourceTree = "<group>"; };
 		F7BCAA911912C896002336F6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F7BCAA971912C896002336F6 /* QuadrocopterFlightPlanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuadrocopterFlightPlanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7BCAA981912C896002336F6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		F7BCAAA01912C896002336F6 /* QuadrocopterFlightPlanTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QuadrocopterFlightPlanTests-Info.plist"; sourceTree = "<group>"; };
 		F7BCAAA21912C896002336F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F7BCAAA41912C896002336F6 /* QuadrocopterFlightPlanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuadrocopterFlightPlanTests.m; sourceTree = "<group>"; };
+		F7BCAAAE1912C998002336F6 /* CLLocation+ObjcioHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocation+ObjcioHelpers.h"; sourceTree = "<group>"; };
+		F7BCAAAF1912C998002336F6 /* CLLocation+ObjcioHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+ObjcioHelpers.m"; sourceTree = "<group>"; };
+		F7BCAAB01912C998002336F6 /* DatagramSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatagramSocket.h; sourceTree = "<group>"; };
+		F7BCAAB11912C998002336F6 /* DatagramSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatagramSocket.m; sourceTree = "<group>"; };
+		F7BCAAB21912C998002336F6 /* DroneCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DroneCommunicator.h; sourceTree = "<group>"; };
+		F7BCAAB31912C998002336F6 /* DroneCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DroneCommunicator.m; sourceTree = "<group>"; };
+		F7BCAAB41912C998002336F6 /* DroneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DroneController.h; sourceTree = "<group>"; };
+		F7BCAAB51912C998002336F6 /* DroneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DroneController.m; sourceTree = "<group>"; };
+		F7BCAAB61912C998002336F6 /* DroneNavigationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DroneNavigationState.h; sourceTree = "<group>"; };
+		F7BCAAB71912C998002336F6 /* DroneNavigationState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DroneNavigationState.m; sourceTree = "<group>"; };
+		F7BCAAB81912C998002336F6 /* Navigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Navigator.h; sourceTree = "<group>"; };
+		F7BCAAB91912C998002336F6 /* Navigator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Navigator.m; sourceTree = "<group>"; };
+		F7BCAABB1912C998002336F6 /* RemoteClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteClient.h; sourceTree = "<group>"; };
+		F7BCAABC1912C998002336F6 /* RemoteClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteClient.m; sourceTree = "<group>"; };
+		F7BCAABD1912C998002336F6 /* RemoteControlCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteControlCommand.h; sourceTree = "<group>"; };
+		F7BCAABE1912C998002336F6 /* RemoteControlCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteControlCommand.m; sourceTree = "<group>"; };
+		F7BCAABF1912C998002336F6 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F7BCAAC01912C998002336F6 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F7BCAAC11912C998002336F6 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		F7BCAACD1912C9FF002336F6 /* QFPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QFPAppDelegate.h; sourceTree = "<group>"; };
+		F7BCAACE1912C9FF002336F6 /* QFPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QFPAppDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +103,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F734BCB51912CC6100F78B0C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F7BCAAAE1912C998002336F6 /* CLLocation+ObjcioHelpers.h */,
+				F7BCAAAF1912C998002336F6 /* CLLocation+ObjcioHelpers.m */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		F734BCB61912CCC900F78B0C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F7BCAABF1912C998002336F6 /* ViewController.h */,
+				F7BCAAC01912C998002336F6 /* ViewController.m */,
+				F7BCAAC11912C998002336F6 /* ViewController.xib */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F734BCB71912CCDD00F78B0C /* Drone */ = {
+			isa = PBXGroup;
+			children = (
+				F7BCAAB01912C998002336F6 /* DatagramSocket.h */,
+				F7BCAAB11912C998002336F6 /* DatagramSocket.m */,
+				F7BCAAB21912C998002336F6 /* DroneCommunicator.h */,
+				F7BCAAB31912C998002336F6 /* DroneCommunicator.m */,
+				F7BCAAB41912C998002336F6 /* DroneController.h */,
+				F7BCAAB51912C998002336F6 /* DroneController.m */,
+				F7BCAAB61912C998002336F6 /* DroneNavigationState.h */,
+				F7BCAAB71912C998002336F6 /* DroneNavigationState.m */,
+				F7BCAAB81912C998002336F6 /* Navigator.h */,
+				F7BCAAB91912C998002336F6 /* Navigator.m */,
+				F7BCAABB1912C998002336F6 /* RemoteClient.h */,
+				F7BCAABC1912C998002336F6 /* RemoteClient.m */,
+				F7BCAABD1912C998002336F6 /* RemoteControlCommand.h */,
+				F7BCAABE1912C998002336F6 /* RemoteControlCommand.m */,
+			);
+			name = Drone;
+			sourceTree = "<group>";
+		};
 		F7BCAA731912C896002336F6 = {
 			isa = PBXGroup;
 			children = (
@@ -107,8 +176,11 @@
 		F7BCAA851912C896002336F6 /* QuadrocopterFlightPlan */ = {
 			isa = PBXGroup;
 			children = (
-				F7BCAA8E1912C896002336F6 /* QFPAppDelegate.h */,
-				F7BCAA8F1912C896002336F6 /* QFPAppDelegate.m */,
+				F7BCAACD1912C9FF002336F6 /* QFPAppDelegate.h */,
+				F7BCAACE1912C9FF002336F6 /* QFPAppDelegate.m */,
+				F734BCB51912CC6100F78B0C /* Extensions */,
+				F734BCB71912CCDD00F78B0C /* Drone */,
+				F734BCB61912CCC900F78B0C /* ViewControllers */,
 				F7BCAA911912C896002336F6 /* Images.xcassets */,
 				F7BCAA861912C896002336F6 /* Supporting Files */,
 			);
@@ -221,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7BCAA8A1912C896002336F6 /* InfoPlist.strings in Resources */,
+				F7BCAACC1912C998002336F6 /* ViewController.xib in Resources */,
 				F7BCAA921912C896002336F6 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,8 +313,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7BCAA901912C896002336F6 /* QFPAppDelegate.m in Sources */,
+				F7BCAACF1912C9FF002336F6 /* QFPAppDelegate.m in Sources */,
+				F7BCAAC61912C998002336F6 /* DroneNavigationState.m in Sources */,
+				F7BCAAC71912C998002336F6 /* Navigator.m in Sources */,
+				F7BCAAC21912C998002336F6 /* CLLocation+ObjcioHelpers.m in Sources */,
+				F7BCAAC31912C998002336F6 /* DatagramSocket.m in Sources */,
+				F7BCAACA1912C998002336F6 /* RemoteControlCommand.m in Sources */,
+				F7BCAAC51912C998002336F6 /* DroneController.m in Sources */,
+				F7BCAACB1912C998002336F6 /* ViewController.m in Sources */,
 				F7BCAA8C1912C896002336F6 /* main.m in Sources */,
+				F7BCAAC91912C998002336F6 /* RemoteClient.m in Sources */,
+				F7BCAAC41912C998002336F6 /* DroneCommunicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +524,7 @@
 				F7BCAAAA1912C896002336F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F7BCAAAB1912C896002336F6 /* Build configuration list for PBXNativeTarget "QuadrocopterFlightPlanTests" */ = {
 			isa = XCConfigurationList;
@@ -450,6 +533,7 @@
 				F7BCAAAD1912C896002336F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
