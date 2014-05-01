@@ -1,0 +1,457 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F7BCAA801912C896002336F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BCAA7F1912C896002336F6 /* Foundation.framework */; };
+		F7BCAA821912C896002336F6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BCAA811912C896002336F6 /* CoreGraphics.framework */; };
+		F7BCAA841912C896002336F6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BCAA831912C896002336F6 /* UIKit.framework */; };
+		F7BCAA8A1912C896002336F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7BCAA881912C896002336F6 /* InfoPlist.strings */; };
+		F7BCAA8C1912C896002336F6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BCAA8B1912C896002336F6 /* main.m */; };
+		F7BCAA901912C896002336F6 /* QFPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BCAA8F1912C896002336F6 /* QFPAppDelegate.m */; };
+		F7BCAA921912C896002336F6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7BCAA911912C896002336F6 /* Images.xcassets */; };
+		F7BCAA991912C896002336F6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BCAA981912C896002336F6 /* XCTest.framework */; };
+		F7BCAA9A1912C896002336F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BCAA7F1912C896002336F6 /* Foundation.framework */; };
+		F7BCAA9B1912C896002336F6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BCAA831912C896002336F6 /* UIKit.framework */; };
+		F7BCAAA31912C896002336F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7BCAAA11912C896002336F6 /* InfoPlist.strings */; };
+		F7BCAAA51912C896002336F6 /* QuadrocopterFlightPlanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BCAAA41912C896002336F6 /* QuadrocopterFlightPlanTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F7BCAA9C1912C896002336F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7BCAA741912C896002336F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F7BCAA7B1912C896002336F6;
+			remoteInfo = QuadrocopterFlightPlan;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F7BCAA7C1912C896002336F6 /* QuadrocopterFlightPlan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuadrocopterFlightPlan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7BCAA7F1912C896002336F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F7BCAA811912C896002336F6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F7BCAA831912C896002336F6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F7BCAA871912C896002336F6 /* QuadrocopterFlightPlan-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QuadrocopterFlightPlan-Info.plist"; sourceTree = "<group>"; };
+		F7BCAA891912C896002336F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F7BCAA8B1912C896002336F6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F7BCAA8D1912C896002336F6 /* QuadrocopterFlightPlan-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuadrocopterFlightPlan-Prefix.pch"; sourceTree = "<group>"; };
+		F7BCAA8E1912C896002336F6 /* QFPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QFPAppDelegate.h; sourceTree = "<group>"; };
+		F7BCAA8F1912C896002336F6 /* QFPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QFPAppDelegate.m; sourceTree = "<group>"; };
+		F7BCAA911912C896002336F6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F7BCAA971912C896002336F6 /* QuadrocopterFlightPlanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuadrocopterFlightPlanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7BCAA981912C896002336F6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		F7BCAAA01912C896002336F6 /* QuadrocopterFlightPlanTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QuadrocopterFlightPlanTests-Info.plist"; sourceTree = "<group>"; };
+		F7BCAAA21912C896002336F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F7BCAAA41912C896002336F6 /* QuadrocopterFlightPlanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuadrocopterFlightPlanTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F7BCAA791912C896002336F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7BCAA821912C896002336F6 /* CoreGraphics.framework in Frameworks */,
+				F7BCAA841912C896002336F6 /* UIKit.framework in Frameworks */,
+				F7BCAA801912C896002336F6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7BCAA941912C896002336F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7BCAA991912C896002336F6 /* XCTest.framework in Frameworks */,
+				F7BCAA9B1912C896002336F6 /* UIKit.framework in Frameworks */,
+				F7BCAA9A1912C896002336F6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F7BCAA731912C896002336F6 = {
+			isa = PBXGroup;
+			children = (
+				F7BCAA851912C896002336F6 /* QuadrocopterFlightPlan */,
+				F7BCAA9E1912C896002336F6 /* QuadrocopterFlightPlanTests */,
+				F7BCAA7E1912C896002336F6 /* Frameworks */,
+				F7BCAA7D1912C896002336F6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F7BCAA7D1912C896002336F6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F7BCAA7C1912C896002336F6 /* QuadrocopterFlightPlan.app */,
+				F7BCAA971912C896002336F6 /* QuadrocopterFlightPlanTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F7BCAA7E1912C896002336F6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F7BCAA7F1912C896002336F6 /* Foundation.framework */,
+				F7BCAA811912C896002336F6 /* CoreGraphics.framework */,
+				F7BCAA831912C896002336F6 /* UIKit.framework */,
+				F7BCAA981912C896002336F6 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F7BCAA851912C896002336F6 /* QuadrocopterFlightPlan */ = {
+			isa = PBXGroup;
+			children = (
+				F7BCAA8E1912C896002336F6 /* QFPAppDelegate.h */,
+				F7BCAA8F1912C896002336F6 /* QFPAppDelegate.m */,
+				F7BCAA911912C896002336F6 /* Images.xcassets */,
+				F7BCAA861912C896002336F6 /* Supporting Files */,
+			);
+			path = QuadrocopterFlightPlan;
+			sourceTree = "<group>";
+		};
+		F7BCAA861912C896002336F6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F7BCAA871912C896002336F6 /* QuadrocopterFlightPlan-Info.plist */,
+				F7BCAA881912C896002336F6 /* InfoPlist.strings */,
+				F7BCAA8B1912C896002336F6 /* main.m */,
+				F7BCAA8D1912C896002336F6 /* QuadrocopterFlightPlan-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F7BCAA9E1912C896002336F6 /* QuadrocopterFlightPlanTests */ = {
+			isa = PBXGroup;
+			children = (
+				F7BCAAA41912C896002336F6 /* QuadrocopterFlightPlanTests.m */,
+				F7BCAA9F1912C896002336F6 /* Supporting Files */,
+			);
+			path = QuadrocopterFlightPlanTests;
+			sourceTree = "<group>";
+		};
+		F7BCAA9F1912C896002336F6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F7BCAAA01912C896002336F6 /* QuadrocopterFlightPlanTests-Info.plist */,
+				F7BCAAA11912C896002336F6 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F7BCAA7B1912C896002336F6 /* QuadrocopterFlightPlan */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7BCAAA81912C896002336F6 /* Build configuration list for PBXNativeTarget "QuadrocopterFlightPlan" */;
+			buildPhases = (
+				F7BCAA781912C896002336F6 /* Sources */,
+				F7BCAA791912C896002336F6 /* Frameworks */,
+				F7BCAA7A1912C896002336F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuadrocopterFlightPlan;
+			productName = QuadrocopterFlightPlan;
+			productReference = F7BCAA7C1912C896002336F6 /* QuadrocopterFlightPlan.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F7BCAA961912C896002336F6 /* QuadrocopterFlightPlanTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7BCAAAB1912C896002336F6 /* Build configuration list for PBXNativeTarget "QuadrocopterFlightPlanTests" */;
+			buildPhases = (
+				F7BCAA931912C896002336F6 /* Sources */,
+				F7BCAA941912C896002336F6 /* Frameworks */,
+				F7BCAA951912C896002336F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F7BCAA9D1912C896002336F6 /* PBXTargetDependency */,
+			);
+			name = QuadrocopterFlightPlanTests;
+			productName = QuadrocopterFlightPlanTests;
+			productReference = F7BCAA971912C896002336F6 /* QuadrocopterFlightPlanTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F7BCAA741912C896002336F6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = QFP;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Cezar Cocu, Ahmed Shaikh";
+				TargetAttributes = {
+					F7BCAA961912C896002336F6 = {
+						TestTargetID = F7BCAA7B1912C896002336F6;
+					};
+				};
+			};
+			buildConfigurationList = F7BCAA771912C896002336F6 /* Build configuration list for PBXProject "QuadrocopterFlightPlan" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F7BCAA731912C896002336F6;
+			productRefGroup = F7BCAA7D1912C896002336F6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F7BCAA7B1912C896002336F6 /* QuadrocopterFlightPlan */,
+				F7BCAA961912C896002336F6 /* QuadrocopterFlightPlanTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F7BCAA7A1912C896002336F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7BCAA8A1912C896002336F6 /* InfoPlist.strings in Resources */,
+				F7BCAA921912C896002336F6 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7BCAA951912C896002336F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7BCAAA31912C896002336F6 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F7BCAA781912C896002336F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7BCAA901912C896002336F6 /* QFPAppDelegate.m in Sources */,
+				F7BCAA8C1912C896002336F6 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7BCAA931912C896002336F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7BCAAA51912C896002336F6 /* QuadrocopterFlightPlanTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F7BCAA9D1912C896002336F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F7BCAA7B1912C896002336F6 /* QuadrocopterFlightPlan */;
+			targetProxy = F7BCAA9C1912C896002336F6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F7BCAA881912C896002336F6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F7BCAA891912C896002336F6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F7BCAAA11912C896002336F6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F7BCAAA21912C896002336F6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F7BCAAA61912C896002336F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F7BCAAA71912C896002336F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F7BCAAA91912C896002336F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QuadrocopterFlightPlan/QuadrocopterFlightPlan-Prefix.pch";
+				INFOPLIST_FILE = "QuadrocopterFlightPlan/QuadrocopterFlightPlan-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F7BCAAAA1912C896002336F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QuadrocopterFlightPlan/QuadrocopterFlightPlan-Prefix.pch";
+				INFOPLIST_FILE = "QuadrocopterFlightPlan/QuadrocopterFlightPlan-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F7BCAAAC1912C896002336F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/QuadrocopterFlightPlan.app/QuadrocopterFlightPlan";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QuadrocopterFlightPlan/QuadrocopterFlightPlan-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "QuadrocopterFlightPlanTests/QuadrocopterFlightPlanTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		F7BCAAAD1912C896002336F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/QuadrocopterFlightPlan.app/QuadrocopterFlightPlan";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QuadrocopterFlightPlan/QuadrocopterFlightPlan-Prefix.pch";
+				INFOPLIST_FILE = "QuadrocopterFlightPlanTests/QuadrocopterFlightPlanTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F7BCAA771912C896002336F6 /* Build configuration list for PBXProject "QuadrocopterFlightPlan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7BCAAA61912C896002336F6 /* Debug */,
+				F7BCAAA71912C896002336F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F7BCAAA81912C896002336F6 /* Build configuration list for PBXNativeTarget "QuadrocopterFlightPlan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7BCAAA91912C896002336F6 /* Debug */,
+				F7BCAAAA1912C896002336F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F7BCAAAB1912C896002336F6 /* Build configuration list for PBXNativeTarget "QuadrocopterFlightPlanTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7BCAAAC1912C896002336F6 /* Debug */,
+				F7BCAAAD1912C896002336F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F7BCAA741912C896002336F6 /* Project object */;
+}
