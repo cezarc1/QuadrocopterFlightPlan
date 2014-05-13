@@ -74,6 +74,11 @@ static int const baseRefCommand = 0x11540000;
     NSAssert(self.commandSocket != nil, @"Failed to create command socket: %@", error);
 }
 
+- (void)refreshNavigationData
+{
+    [self.navigationDataSocket asynchronouslySendData:self.triggerData];
+}
+
 - (NSData *)triggerData
 {
     static char const trigger[4] = {0x01, 0x00, 0x00, 0x00};
@@ -164,6 +169,9 @@ static int const baseRefCommand = 0x11540000;
 - (void)resetEmergency
 {
     self.isFlying = NO;
+    self.forceHover = NO;
+    self.forwardSpeed = 0;
+    self.rotationSpeed = 0;
     [self sendRefCommand:baseRefCommand|(1<<8)];
 }
 
@@ -213,7 +221,7 @@ static int const baseRefCommand = 0x11540000;
 - (void)setupDefaults
 {
     [self setConfigurationKey:@"general:navdata_demo" toString:@"FALSE"];
-    [self setConfigurationKey:@"control:altitude_max" toString:@"1600"];
+    [self setConfigurationKey:@"control:altitude_max" toString:@"3000"];
     [self setConfigurationKey:@"control:flying_mode" toString:@"1000"];
 
     [self sendCommand:@"COMWDG" arguments:nil]; // WatchDog timer
@@ -221,12 +229,12 @@ static int const baseRefCommand = 0x11540000;
 }
 @end
 
-
-
 @implementation DroneCommunicator (Convenience)
 
 - (void)takeoff;
 {
+    self.forwardSpeed = 0;
+    self.rotationSpeed = 0;
     self.isFlying = YES;
     self.forceHover = YES;
     [self sendRefCommand:baseRefCommand | (1<<9)];
@@ -235,6 +243,8 @@ static int const baseRefCommand = 0x11540000;
 - (void)land;
 {
     self.isFlying = NO;
+    self.forwardSpeed = 0;
+    self.rotationSpeed = 0;
     [self sendRefCommand:baseRefCommand];
 }
 
@@ -242,7 +252,6 @@ static int const baseRefCommand = 0x11540000;
 {
     self.forwardSpeed = 0;
     self.rotationSpeed = 0;
-    self.forceHover = YES;
 }
 
 @end

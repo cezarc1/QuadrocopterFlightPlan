@@ -9,6 +9,7 @@
 #import "QFPAppDelegate.h"
 #import "DroneCommunicator.h"
 #import "ViewController.h"
+#import "ClientViewController.h"
 @import MultipeerConnectivity;
 
 
@@ -29,8 +30,13 @@
     [self.window makeKeyAndVisible];
     
     
+    //Remote
     self.vc = [[ViewController alloc] initWithNibName:nil bundle:nil];
     self.window.rootViewController = self.vc;
+    
+    //Local
+//    ClientViewController *cvc = [[ClientViewController alloc] init];
+//    self.window.rootViewController = cvc;
     
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     

@@ -30,6 +30,7 @@ typedef enum DroneControlState_e : int8_t {
 @interface DroneNavigationState : NSObject
 
 + (instancetype)stateFromNavigationData:(NSData *)data;
+-(NSString *)controlStateDescription;
 
 @property (readonly, nonatomic) uint32_t sequenceNumber;
 

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F766594A191EE9A200A0BE13 /* ClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7665948191EE9A200A0BE13 /* ClientViewController.m */; };
+		F766594B191EE9A200A0BE13 /* ClientViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7665949191EE9A200A0BE13 /* ClientViewController.xib */; };
+		F766594D191EE9EC00A0BE13 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F766594C191EE9EC00A0BE13 /* MapKit.framework */; };
+		F7665950191F100200A0BE13 /* LocalClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F766594F191F100200A0BE13 /* LocalClient.m */; };
+		F7665952191F5E5100A0BE13 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7665951191F5E5100A0BE13 /* AudioToolbox.framework */; };
 		F7BCAA801912C896002336F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BCAA7F1912C896002336F6 /* Foundation.framework */; };
 		F7BCAA821912C896002336F6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BCAA811912C896002336F6 /* CoreGraphics.framework */; };
 		F7BCAA841912C896002336F6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BCAA831912C896002336F6 /* UIKit.framework */; };
@@ -42,6 +47,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F7665947191EE9A200A0BE13 /* ClientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientViewController.h; sourceTree = "<group>"; };
+		F7665948191EE9A200A0BE13 /* ClientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientViewController.m; sourceTree = "<group>"; };
+		F7665949191EE9A200A0BE13 /* ClientViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClientViewController.xib; sourceTree = "<group>"; };
+		F766594C191EE9EC00A0BE13 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F766594E191F100200A0BE13 /* LocalClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalClient.h; sourceTree = "<group>"; };
+		F766594F191F100200A0BE13 /* LocalClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalClient.m; sourceTree = "<group>"; };
+		F7665951191F5E5100A0BE13 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F7BCAA7C1912C896002336F6 /* QuadrocopterFlightPlan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuadrocopterFlightPlan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7BCAA7F1912C896002336F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F7BCAA811912C896002336F6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -84,6 +96,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7665952191F5E5100A0BE13 /* AudioToolbox.framework in Frameworks */,
+				F766594D191EE9EC00A0BE13 /* MapKit.framework in Frameworks */,
 				F7BCAA821912C896002336F6 /* CoreGraphics.framework in Frameworks */,
 				F7BCAA841912C896002336F6 /* UIKit.framework in Frameworks */,
 				F7BCAA801912C896002336F6 /* Foundation.framework in Frameworks */,
@@ -118,6 +132,9 @@
 				F7BCAABF1912C998002336F6 /* ViewController.h */,
 				F7BCAAC01912C998002336F6 /* ViewController.m */,
 				F7BCAAC11912C998002336F6 /* ViewController.xib */,
+				F7665947191EE9A200A0BE13 /* ClientViewController.h */,
+				F7665948191EE9A200A0BE13 /* ClientViewController.m */,
+				F7665949191EE9A200A0BE13 /* ClientViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -137,6 +154,8 @@
 				F7BCAAB91912C998002336F6 /* Navigator.m */,
 				F7BCAABB1912C998002336F6 /* RemoteClient.h */,
 				F7BCAABC1912C998002336F6 /* RemoteClient.m */,
+				F766594E191F100200A0BE13 /* LocalClient.h */,
+				F766594F191F100200A0BE13 /* LocalClient.m */,
 				F7BCAABD1912C998002336F6 /* RemoteControlCommand.h */,
 				F7BCAABE1912C998002336F6 /* RemoteControlCommand.m */,
 			);
@@ -165,6 +184,8 @@
 		F7BCAA7E1912C896002336F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F7665951191F5E5100A0BE13 /* AudioToolbox.framework */,
+				F766594C191EE9EC00A0BE13 /* MapKit.framework */,
 				F7BCAA7F1912C896002336F6 /* Foundation.framework */,
 				F7BCAA811912C896002336F6 /* CoreGraphics.framework */,
 				F7BCAA831912C896002336F6 /* UIKit.framework */,
@@ -261,9 +282,12 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = QFP;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Cezar Cocu, Ahmed Shaikh";
 				TargetAttributes = {
+					F7BCAA7B1912C896002336F6 = {
+						DevelopmentTeam = TAYL98RB5T;
+					};
 					F7BCAA961912C896002336F6 = {
 						TestTargetID = F7BCAA7B1912C896002336F6;
 					};
@@ -295,6 +319,7 @@
 				F7BCAA8A1912C896002336F6 /* InfoPlist.strings in Resources */,
 				F7BCAACC1912C998002336F6 /* ViewController.xib in Resources */,
 				F7BCAA921912C896002336F6 /* Images.xcassets in Resources */,
+				F766594B191EE9A200A0BE13 /* ClientViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +349,8 @@
 				F7BCAA8C1912C896002336F6 /* main.m in Sources */,
 				F7BCAAC91912C998002336F6 /* RemoteClient.m in Sources */,
 				F7BCAAC41912C998002336F6 /* DroneCommunicator.m in Sources */,
+				F766594A191EE9A200A0BE13 /* ClientViewController.m in Sources */,
+				F7665950191F100200A0BE13 /* LocalClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,7 +396,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -408,7 +434,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -442,10 +467,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuadrocopterFlightPlan/QuadrocopterFlightPlan-Prefix.pch";
 				INFOPLIST_FILE = "QuadrocopterFlightPlan/QuadrocopterFlightPlan-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -455,10 +483,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuadrocopterFlightPlan/QuadrocopterFlightPlan-Prefix.pch";
 				INFOPLIST_FILE = "QuadrocopterFlightPlan/QuadrocopterFlightPlan-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -466,7 +497,6 @@
 		F7BCAAAC1912C896002336F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/QuadrocopterFlightPlan.app/QuadrocopterFlightPlan";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -489,7 +519,6 @@
 		F7BCAAAD1912C896002336F6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/QuadrocopterFlightPlan.app/QuadrocopterFlightPlan";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

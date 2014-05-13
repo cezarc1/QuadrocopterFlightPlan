@@ -23,6 +23,12 @@
 
 @property (nonatomic) BOOL forceHover;
 
+@property (nonatomic, readonly) BOOL isFlying;
+
+- (void)refreshNavigationData;
+
+- (void)setupSockets;
+
 @end
 
 

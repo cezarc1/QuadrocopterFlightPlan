@@ -11,7 +11,16 @@
 @interface Navigator : NSObject
 
 @property (nonatomic, strong) CLLocation *targetLocation;
+
 @property (nonatomic, readonly) CLLocationDirection directionDifferenceToTarget;
+
 @property (nonatomic, readonly) CLLocationDistance distanceToTarget;
+
+@property (nonatomic, strong) CLLocation *lastKnowLocation;
+
+
++ (CLLocation *) locationWithBearing:(float)bearing
+                            distance:(float)distanceMeters
+                        fromLocation:(CLLocationCoordinate2D)origin;
 
 @end

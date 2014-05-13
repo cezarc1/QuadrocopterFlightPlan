@@ -3,14 +3,20 @@
 //
 
 #import "RemoteClient.h"
+#import "Navigator.h"
+#import <AudioToolbox/AudioServices.h>
 
 @import MultipeerConnectivity;
 @import CoreLocation;
 
-@interface RemoteClient () <MCNearbyServiceBrowserDelegate, MCSessionDelegate>
+#define CLCOORDINATE_EPSILON 0.0005f
+#define CLCOORDINATES_EQUAL2( coord1, coord2 ) (fabs(coord1.latitude - coord2.latitude) < CLCOORDINATE_EPSILON && fabs(coord1.longitude - coord2.longitude) < CLCOORDINATE_EPSILON)
 
-@property (nonatomic, strong) MCSession *session;
-@property (nonatomic, strong) MCNearbyServiceBrowser *browser;
+@interface RemoteClient () <MCNearbyServiceAdvertiserDelegate, MCSessionDelegate>
+
+@property (nonatomic, strong) MCNearbyServiceAdvertiser *advertiser;
+@property (nonatomic, strong) MCPeerID *peerID;
+@property (nonatomic, assign) CLLocationCoordinate2D lastSentDroneCord;
 
 @end
 
@@ -18,33 +24,84 @@
 
 - (void)startBrowsing
 {
-    MCPeerID* peerId = [[MCPeerID alloc] initWithDisplayName:@"Drone"];
+    self.peerID = [[MCPeerID alloc] initWithDisplayName:@"Drone"];
 
-    self.browser = [[MCNearbyServiceBrowser alloc] initWithPeer:peerId serviceType:@"loc-broadcaster"];
-    self.browser.delegate = self;
-    [self.browser startBrowsingForPeers];
-
-    self.session = [[MCSession alloc] initWithPeer:peerId];
+    self.advertiser = [[MCNearbyServiceAdvertiser alloc] initWithPeer:self.peerID
+                                                     discoveryInfo:nil
+                                                       serviceType:@"loc-broadcaster"];
+    self.advertiser.delegate = self;
+    [self.advertiser startAdvertisingPeer];
+    
+    self.session = [[MCSession alloc] initWithPeer:self.peerID
+                                        securityIdentity:nil
+                                    encryptionPreference:MCEncryptionNone];
     self.session.delegate = self;
+
 }
 
-
-- (void)browser:(MCNearbyServiceBrowser *)browser foundPeer:(MCPeerID *)peerID withDiscoveryInfo:(NSDictionary *)info
+-(void)setNavigator:(Navigator *)navigator
 {
-    [browser invitePeer:peerID toSession:self.session withContext:nil timeout:1];
+    _navigator = navigator;
+    
+    NSString *key = NSStringFromSelector(@selector(lastKnowLocation));
+    [_navigator addObserver:self
+                 forKeyPath:key
+                    options:NSKeyValueObservingOptionOld
+                    context:nil];
 }
 
-- (void)browser:(MCNearbyServiceBrowser *)browser lostPeer:(MCPeerID *)peerID
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
 {
+    if ([keyPath isEqualToString:@"lastKnowLocation"] && (self.session.connectedPeers.count > 0)) {
+        CLLocationCoordinate2D loc = self.navigator.lastKnowLocation.coordinate;
+        NSDictionary *dict = @{@"latitude": @(loc.latitude),
+                               @"longitude": @(loc.longitude)};
+        NSError * err;
+        NSData * jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&err];
+        if (![self.session sendData:jsonData
+                            toPeers:self.session.connectedPeers
+                           withMode:MCSessionSendDataReliable
+                              error:&err]) {
+            NSLog(@"[Error] %@", err);
+        }
+    }
 }
 
-- (void)browser:(MCNearbyServiceBrowser *)browser didNotStartBrowsingForPeers:(NSError *)error;
+#pragma mark - MCNearbyServiceAdvertiserDelegate
+
+- (void)advertiser:(MCNearbyServiceAdvertiser *)advertiser
+didReceiveInvitationFromPeer:(MCPeerID *)peerID
+       withContext:(NSData *)context
+ invitationHandler:(void (^)(BOOL accept, MCSession *session))invitationHandler
 {
+
+    invitationHandler(YES, self.session);
 }
 
+#pragma mark - MCSessionDelegate
 
 - (void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state
 {
+    if (state == MCSessionStateConnected) {
+        CLLocation *loc = [self.delegate remoteClientdidRequestDroneLocation:self];
+        if (loc) {
+            self.lastSentDroneCord = loc.coordinate;
+            
+            NSDictionary *dict = @{@"latitude": @(loc.coordinate.latitude),
+                                   @"longitude": @(loc.coordinate.longitude)};
+            NSError * err;
+            NSData * jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&err];
+            if (![self.session sendData:jsonData
+                                toPeers:@[peerID]
+                               withMode:MCSessionSendDataReliable
+                                  error:&err]) {
+                NSLog(@"[Error] %@", err);
+            }
+        }
+    }
 }
 
 - (void)session:(MCSession *)session didReceiveStream:(NSInputStream *)stream withName:(NSString *)streamName fromPeer:(MCPeerID *)peerID
@@ -73,7 +130,7 @@
             [self.delegate remoteClient:self didReceiveTargetLocation:location];
         }
 
-        if (result[@"stop"]) {
+        if (result[@"land"]) {
             [self.delegate remoteClientDidReceiveLandCommand:self];
         }
         if (result[@"takeoff"]) {
@@ -82,8 +139,10 @@
         if (result[@"reset"]) {
             [self.delegate remoteClientDidReceiveResetCommand:self];
         };
+        if (result[@"stop"]) {
+            [self.delegate remoteClientDidReceiveStopCommand:self];
+        };
     }];
-
 }
 
 @end

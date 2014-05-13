@@ -18,7 +18,6 @@
 @property (nonatomic, strong) CLHeading *lastKnownSelfHeading;
 @property (nonatomic, strong) OBJDirection *direction;
 
-@property (nonatomic, strong) CLLocation * lastKnowLocation;
 @end
 
 
@@ -48,7 +47,7 @@
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     [self.locationManager startUpdatingLocation];
     
-    self.targetLocation = [[CLLocation alloc] initWithCoordinate:(CLLocationCoordinate2D){52.50532722, 13.41468919} altitude:10 horizontalAccuracy:0 verticalAccuracy:0 timestamp:nil];
+    self.targetLocation = [[CLLocation alloc] initWithCoordinate:(CLLocationCoordinate2D){ 42.081823, -76.022524} altitude:10 horizontalAccuracy:0 verticalAccuracy:0 timestamp:nil];
     
     [self.locationManager startUpdatingHeading];
 }
@@ -86,7 +85,7 @@
 
 - (CLLocationDirection)directionDifferenceToTarget;
 {
-    CLLocationDirection result = (self.direction.heading - self.lastKnownSelfHeading.trueHeading - 90);
+    CLLocationDirection result = (self.direction.heading - self.lastKnownSelfHeading.trueHeading );
     // Make sure the result is in the range -180 -> 180
     result = fmod(result + 180. + 360., 360.) - 180.;
     return result;
@@ -100,7 +99,8 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
 {
-    if (0 < [locations count]) {
+    if (0 < [locations count] && ([self.lastKnowLocation distanceFromLocation:locations.lastObject] != 0 || self.lastKnowLocation == nil))  {
+        
         self.lastKnowLocation = locations.lastObject;
         
     }

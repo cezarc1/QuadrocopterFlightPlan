@@ -12,20 +12,23 @@
 #import "DroneNavigationState.h"
 #import "DroneController.h"
 #import "RemoteClient.h"
+#import <MobileCoreServices/MobileCoreServices.h>
 
+@import MultipeerConnectivity;
 
-@interface ViewController () <DroneControllerDelegate, RemoteClientDelegate>
+@interface ViewController () <DroneControllerDelegate, RemoteClientDelegate, CLLocationManagerDelegate>
+{
+    CLLocationManager *locationManager;
+    CLLocation *currentLocation;
+}
 
-@property (strong, nonatomic) IBOutlet UILabel *label;
-@property (strong, nonatomic) IBOutlet UILabel *otherLabel;
-@property (strong, nonatomic) IBOutlet UISlider *slider;
-@property (strong, nonatomic) IBOutlet UIProgressView *progressView;
 @property (strong, nonatomic) IBOutlet UITextView *textView;
 
 @property (nonatomic, strong) DroneController *droneController;
 @property (nonatomic, strong) Navigator *navigator;
 @property (nonatomic, strong) RemoteClient *remoteClient;
 @property (nonatomic, strong) DroneCommunicator *communicator;
+
 @end
 
 
@@ -49,9 +52,17 @@
     self.navigator = [[Navigator alloc] init];
     self.droneController = [[DroneController alloc] initWithCommunicator:self.communicator navigator:self.navigator];
     self.droneController.delegate = self;
+    
     self.remoteClient = [[RemoteClient alloc] init];
     [self.remoteClient startBrowsing];
+    self.remoteClient.navigator = self.navigator;
     self.remoteClient.delegate = self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated;
@@ -68,13 +79,67 @@
 
 - (void)updateDisplay
 {
-    self.otherLabel.text = [NSString stringWithFormat:@"%@°",
-                            [NSNumberFormatter localizedStringFromNumber:@(self.navigator.directionDifferenceToTarget) numberStyle:NSNumberFormatterDecimalStyle]];
-    self.label.text = [NSString stringWithFormat:@"%@ m",
-                       [NSNumberFormatter localizedStringFromNumber:@(self.navigator.distanceToTarget) numberStyle:NSNumberFormatterDecimalStyle]];
+    DroneNavigationState *droneState = self.communicator.navigationState;
+    
+    self.textView.text = droneState ? droneState.description : @"NO DATA";
+    [self updateDroneStatus];
+    [self updateClientStatus];
 
-    self.progressView.progress = self.communicator.navigationState.batteryLevel / 100.0f;
-    self.textView.text = self.communicator.navigationState.description;
+    self.labelStatusDrone.text = droneState ? droneState.controlStateDescription : @"Unknown";
+    self.labelInternalStatusDrone.text = self.droneController.droneActivityDescription;
+    
+    NSString *direction = [NSString stringWithFormat:@"%f°", self.navigator.directionDifferenceToTarget];
+    self.labelDirectionDifferenceToTarget.text = direction;
+    
+    NSString *distance = [NSString stringWithFormat:@"%f meters", self.navigator.distanceToTarget];
+    self.labelDistanceToTarget.text = distance;
+    
+    NSString *rotationSpeed = [NSString stringWithFormat:@"%f ", self.communicator.rotationSpeed];
+    self.labelRotationSpeed.text = rotationSpeed;
+    
+    NSString *fowardSpeed = [NSString stringWithFormat:@"%f ", self.communicator.forwardSpeed];
+    self.labelFowardSpeed.text = fowardSpeed;
+}
+
+- (void)updateClientStatus
+{
+    switch (self.remoteClient.session.connectedPeers.count) {
+        case 0:
+            self.labelConnectionStatusClient.text = @"Disconnected";
+            self.labelConnectionStatusClient.textColor = [UIColor redColor];
+            break;
+    
+        default:
+            self.labelConnectionStatusClient.text = @"Connected";
+            self.labelConnectionStatusClient.textColor = [UIColor greenColor];
+            break;
+    }
+    NSMutableString *clientDesc = [NSMutableString stringWithFormat:@"%lu Clients: ", (unsigned long)self.remoteClient.session.connectedPeers.count];
+    for (MCPeerID *peer in self.remoteClient.session.connectedPeers) {
+        [clientDesc appendString:peer.displayName];
+    }
+    self.labelNamesClients.text = clientDesc;
+}
+
+- (void)updateDroneStatus
+{
+    DroneNavigationState *droneState = self.communicator.navigationState;
+    BOOL hasConnection = (droneState != nil) || droneState.controlState != DroneControlStateInvalid;
+    
+    if (!hasConnection) {
+        self.labelConnectionStatusDrone.text = @"Disconnected";
+        self.labelConnectionStatusDrone.textColor = [UIColor redColor];
+        self.labelBatteryLevel.text = @"???";
+        [self.communicator setupSockets];
+        [self.communicator setupDefaults];
+    } else {
+        self.labelConnectionStatusDrone.text = @"Connected";
+        self.labelConnectionStatusDrone.textColor = [UIColor greenColor];
+        
+        self.labelBatteryLevel.text = [NSString stringWithFormat:@"%d %%", droneState.batteryLevel];
+        self.labelBatteryLevel.textColor = droneState.batteryLevel < 35 ? [UIColor redColor] : [UIColor greenColor];
+    }
+    
 }
 
 - (void)droneController:(DroneController *)controller updateTimerFired:(NSTimer *)fired
@@ -87,28 +152,23 @@
 }
 
 - (IBAction)hover:(id)sender {
-    [self.communicator hover];
+    [self.droneController hover];
 }
 
 - (IBAction)land:(id)sender {
-    [self.communicator land];
-}
-- (IBAction)reset:(id)sender {
-    [self.communicator resetEmergency];
+    [self.droneController land];
 }
 
-- (IBAction)rotate:(id)sender
-{
-    self.communicator.forwardSpeed = 0;
-    self.communicator.rotationSpeed = 1;
+- (IBAction)reset:(id)sender {
+    [self.communicator resetEmergency];
+    self.droneController.droneActivity = DroneActivityNone;
 }
 
 #pragma mark RemoteClient delegate
 
 - (void)remoteClient:(RemoteClient *)client didReceiveTargetLocation:(CLLocation *)location
 {
-    self.droneController.droneActivity = DroneActivityFlyToTarget;
-    self.navigator.targetLocation = location;
+    [self.droneController goTo:location];
 }
 
 - (void)remoteClientDidReceiveResetCommand:(RemoteClient *)client
@@ -124,6 +184,16 @@
 - (void)remoteClientDidReceiveLandCommand:(RemoteClient *)client
 {
     [self land:nil];
+}
+
+- (void)remoteClientDidReceiveStopCommand:(RemoteClient *)client
+{
+    [self hover:nil];
+}
+
+- (CLLocation *)remoteClientdidRequestDroneLocation:(RemoteClient *)client;
+{
+    return self.navigator.lastKnowLocation;
 }
 
 @end

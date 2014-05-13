@@ -165,7 +165,7 @@ static NSString * errorString(void)
     }
 }
 
-- (void)socketHasBytesAvailable;
+- (BOOL)socketHasBytesAvailable;
 {
     struct sockaddr_in sin_other = self.sin_other;
     socklen_t length = sizeof(sin_other);
@@ -173,11 +173,13 @@ static NSString * errorString(void)
     ssize_t count = recvfrom(self.nativeSocket, [data mutableBytes], [data length], 0, (struct sockaddr *) &sin_other, &length);
     if (count < 0) {
         NSLog(@"recvfrom() failed: %@", errorString());
+        return NO;
     } else {
         [data setLength:count];
         [self.receiveQueue addOperationWithBlock:^{
             [self.receiveDelegate datagramSocket:self didReceiveData:data];
         }];
+        return YES;
     }
 }
 
@@ -200,8 +202,6 @@ static NSString * errorString(void)
 }
 
 @end
-
-
 
 @implementation DatagramSocketSendOperation : NSOperation
 

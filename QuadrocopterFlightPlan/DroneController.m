@@ -6,6 +6,8 @@
 #import "DroneCommunicator.h"
 #import "Navigator.h"
 
+#define kQFPDroneDegreesDifferenceToGoFoward 65.
+#define kQFPDroneMaxSpeedFoward 0.35
 
 @interface DroneController ()
 
@@ -61,26 +63,110 @@
 
 - (void)updateDroneCommands;
 {
-    if (self.navigator.distanceToTarget < 1) {
+    if (self.navigator.distanceToTarget < self.navigator.lastKnowLocation.horizontalAccuracy) {
+        NSLog(@"Drone: Arrived at destination");
         self.droneActivity = DroneActivityHover;
     } else {
         static double const rotationSpeedScale = 0.01;
         self.communicator.rotationSpeed = self.navigator.directionDifferenceToTarget * rotationSpeedScale;
-        BOOL roughlyInRightDirection = fabs(self.navigator.directionDifferenceToTarget) < 45.;
-        self.communicator.forwardSpeed = roughlyInRightDirection ? 0.2 : 0;
+        BOOL roughlyInRightDirection = fabs(self.navigator.directionDifferenceToTarget) < kQFPDroneDegreesDifferenceToGoFoward;
+        self.communicator.forwardSpeed = roughlyInRightDirection ? [self fowardSpeedForDirectionDifference:self.navigator.directionDifferenceToTarget] : 0;
+    }
+}
+
+- (double)fowardSpeedForDirectionDifference:(double)directionDifference
+{
+    double maxSpeed = [self maximumSpeedForDistanceLeft:self.navigator.distanceToTarget];
+    double ddt = fabs(directionDifference);
+    if (ddt == 0.0f) {
+        return maxSpeed;
+    }
+    
+    double percentAway = ddt / kQFPDroneDegreesDifferenceToGoFoward;
+    double result = fabs((maxSpeed * percentAway) - maxSpeed);
+    
+    return result;
+}
+
+- (double)maximumSpeedForDistanceLeft:(double)distance
+{
+    if (distance < self.navigator.lastKnowLocation.horizontalAccuracy + 5) {
+        return kQFPDroneMaxSpeedFoward * 0.75;
+    }
+    else {
+        return kQFPDroneMaxSpeedFoward;
     }
 }
 
 - (void)takeOff
 {
-    [self.communicator takeoff];
-    [self.communicator hover];
-    // This is not very pretty. But we just wait a few seconds before doing anything.
-    double delayInSeconds = 4.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        self.communicator.forceHover = NO;
-    });
+    if (! self.communicator.isFlying) {
+        [self.communicator takeoff];
+        [self.communicator hover];
+        self.droneActivity = DroneActivityHover;
+        // This is not very pretty. But we just wait a few seconds before doing anything.
+        double delayInSeconds = 4.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            self.communicator.forceHover = NO;
+        });
+    } else {
+        [self hover];
+    }
+}
+
+- (void)hover
+{
+    if (self.communicator.isFlying) {
+        [self.communicator hover];
+        // This is not very pretty. But we just wait a few seconds before doing anything.
+        self.droneActivity = DroneActivityHover;
+        double delayInSeconds = 0.5;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            self.communicator.forceHover = NO;
+        });
+    }
+}
+
+- (void)land
+{
+    [self.communicator land];
+    self.droneActivity = DroneActivityNone;
+}
+
+- (void)reset
+{
+    [self.communicator resetEmergency];
+    self.droneActivity = DroneActivityNone;
+}
+
+- (void)goTo:(CLLocation *)newLocation
+{
+    if (self.droneActivity == DroneActivityFlyToTarget || self.droneActivity == DroneActivityHover) {
+        BOOL tooFar = [newLocation distanceFromLocation:self.navigator.lastKnowLocation] > 100;
+        if (!tooFar) {
+            self.navigator.targetLocation = newLocation;
+            self.droneActivity = DroneActivityFlyToTarget;
+        } else {
+            NSLog(@"[ERROR] Received Location that is way too far away! Hovering");
+            [self hover];
+        }
+    } else {
+        NSLog(@"Received GO command but must be flying first!");
+    }
+
+}
+
+- (NSString *)droneActivityDescription
+{
+    if (self.droneActivity == DroneActivityNone) {
+        return @"None";
+    } else if (self.droneActivity == DroneActivityHover) {
+        return @"Hovering";
+    } else {
+        return @"Flying to Target";
+    }
 }
 
 @end

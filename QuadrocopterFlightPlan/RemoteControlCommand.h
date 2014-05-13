@@ -8,9 +8,6 @@
 
 @import CoreLocation;
 
-
-
-
 @interface RemoteControlCommand : NSObject <NSSecureCoding>
 
 + (instancetype)commandFromNetworkData:(NSData *)data;

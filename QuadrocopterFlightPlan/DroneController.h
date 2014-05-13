@@ -3,6 +3,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
 @class DroneController;
 
@@ -15,6 +16,7 @@ typedef enum DroneActivity_e {
 @class DroneController;
 @class DroneCommunicator;
 @class Navigator;
+@class CLLocation;
 
 @protocol DroneControllerDelegate <NSObject>
 
@@ -30,6 +32,11 @@ typedef enum DroneActivity_e {
 - (void)start;
 - (void)stop;
 
+- (void)goTo:(CLLocation *)newLocation;
 - (void)takeOff;
 - (void)land;
+- (void)hover;
+
+- (NSString *)droneActivityDescription;
+
 @end

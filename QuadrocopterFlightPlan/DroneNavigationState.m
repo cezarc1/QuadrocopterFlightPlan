@@ -160,44 +160,52 @@ uint32_t const WiFiLinkQualityUnknown = 0xffff;
     return YES;
 }
 
+-(NSString *)controlStateDescription
+{
+    switch (self.controlState) {
+        case DroneControlStateDefault:
+            return @"Default";
+            break;
+        case DroneControlStateInit:
+             return @"Init";
+            break;
+        case DroneControlStateLanded:
+            return @"Landed";
+            break;
+        case DroneControlStateFlying:
+            return @"Flying";
+            break;
+        case DroneControlStateHovering:
+            return @"Hovering";
+            break;
+        case DroneControlStateTest:
+            return @"Test";
+            break;
+        case DroneControlStateTakeoff:
+            return @"Takeoff";
+            break;
+        case DroneControlStateGotoFix:
+            return @"GotoFix";
+            break;
+        case DroneControlStateLanding:
+            return @"Landing";
+            break;
+        case DroneControlStateInvalid:
+        default:
+            return @"Invalid";
+            break;
+    }
+    return @"Unknown";
+}
+
 - (NSString *)description;
 {
     NSMutableString *description = [NSMutableString string];
     
     [description appendFormat:@"%x ", self.sequenceNumber];
     
-    switch (self.controlState) {
-        case DroneControlStateDefault:
-            [description appendString:@"state = Default"];
-            break;
-        case DroneControlStateInit:
-            [description appendString:@"state = Init"];
-            break;
-        case DroneControlStateLanded:
-            [description appendString:@"state = Landed"];
-            break;
-        case DroneControlStateFlying:
-            [description appendString:@"state = Flying"];
-            break;
-        case DroneControlStateHovering:
-            [description appendString:@"state = Hovering"];
-            break;
-        case DroneControlStateTest:
-            [description appendString:@"state = Test"];
-            break;
-        case DroneControlStateTakeoff:
-            [description appendString:@"state = Takeoff"];
-            break;
-        case DroneControlStateGotoFix:
-            [description appendString:@"state = GotoFix"];
-            break;
-        case DroneControlStateLanding:
-            [description appendString:@"state = Landing"];
-            break;
-        case DroneControlStateInvalid:
-        default:
-            break;
-    }
+    NSString *state = [NSString stringWithFormat:@" STATE: %@ ", self.controlStateDescription];
+    [description appendString:state];
     
     NSMutableArray *flags = [NSMutableArray array];
     if (self.flying) {
