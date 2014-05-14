@@ -28,7 +28,6 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    
     //Remote
 //    self.vc = [[ViewController alloc] initWithNibName:nil bundle:nil];
 //    self.window.rootViewController = self.vc;
