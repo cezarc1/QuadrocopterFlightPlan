@@ -12,6 +12,8 @@ We accomplish this by using two iOS devices. One devices strapped to the drone a
 ![Remote Client](https://github.com/ggamecrazy/QuadrocopterFlightPlan/blob/master/Screenshots/Remote_Client.jpg?raw=true)
 ![Local Client](https://github.com/ggamecrazy/QuadrocopterFlightPlan/blob/master/Screenshots/Local_Client.jpg?raw=true)
 
+The Red pin represents the Drone's Position and the Green pin represents the drones destination.
+
 ###Usage
 
 ####Building the Local Client or "Terminal"
