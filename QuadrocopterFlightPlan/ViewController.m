@@ -153,6 +153,11 @@
     [self.remoteClient sendDictionaryToAllPeers:@{@"battery": number}];
 }
 
+- (void)droneController:(DroneController *)controller droneStateUpdated:(NSString *)state
+{
+    [self.remoteClient sendDictionaryToAllPeers:@{@"droneState": state}];
+}
+
 #pragma mark - Actions
 
 - (IBAction)takeoff:(id)sender {

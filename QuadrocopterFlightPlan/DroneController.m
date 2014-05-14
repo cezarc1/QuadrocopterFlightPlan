@@ -7,7 +7,7 @@
 #import "Navigator.h"
 #import "DroneNavigationState.h"
 
-#define kQFPDroneDegreesDifferenceToGoFoward 65.
+#define kQFPDroneDegreesDifferenceToGoFoward 35.
 #define kQFPDroneMaxSpeedFoward 0.35
 
 @interface DroneController ()
@@ -88,7 +88,10 @@
     NSString *key = NSStringFromSelector(@selector(navigationState));
     if ([keyPath isEqualToString:key]) {
         
-        [self.delegate droneController:self batteryUpdated:@(self.communicator.navigationState.batteryLevel)];
+        [self.delegate droneController:self
+                        batteryUpdated:@(self.communicator.navigationState.batteryLevel)];
+        [self.delegate droneController:self
+                     droneStateUpdated:self.communicator.navigationState.controlStateDescription];
     }
 }
 
@@ -182,7 +185,7 @@
             self.navigator.targetLocation = newLocation;
             self.droneActivity = DroneActivityFlyToTarget;
         } else {
-            NSLog(@"[ERROR] Received Location that is way too far away! Hovering");
+            NSLog(@"[ERROR]: Received Location that is way too far away! Hovering");
             [self hover];
         }
     } else {

@@ -152,6 +152,11 @@ didUpdateUserLocation:(MKUserLocation *)userLocation
     
 }
 
+- (void)didReceiveDoneState:(NSString *)state
+{
+    self.labelDroneState.text = state;
+}
+
 #pragma mark - actions
 
 - (IBAction)goPressed:(id)sender

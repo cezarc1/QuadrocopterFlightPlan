@@ -18,6 +18,7 @@
 - (void)peerDidDisconnect:(MCPeerID *)peer;
 - (void)localClient:(LocalClient *)client didReceiveLocation:(CLLocation *)coordinate;
 - (void)didReceiveBatteryInfo:(NSNumber *)battery;
+- (void)didReceiveDoneState:(NSString *)state;
 
 @end
 

@@ -25,18 +25,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
     
     //Remote
-    self.vc = [[ViewController alloc] initWithNibName:nil bundle:nil];
-    self.window.rootViewController = self.vc;
+//    self.vc = [[ViewController alloc] initWithNibName:nil bundle:nil];
+//    self.window.rootViewController = self.vc;
     
     //Local
-//    ClientViewController *cvc = [[ClientViewController alloc] init];
-//    self.window.rootViewController = cvc;
+    ClientViewController *cvc = [[ClientViewController alloc] init];
+    self.window.rootViewController = cvc;
     
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     

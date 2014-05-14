@@ -22,6 +22,7 @@ typedef enum DroneActivity_e {
 
 - (void)droneController:(DroneController *)controller updateTimerFired:(NSTimer *)fired;
 - (void)droneController:(DroneController *)controller batteryUpdated:(NSNumber *)number;
+- (void)droneController:(DroneController *)controller droneStateUpdated:(NSString *)state;
 @end
 
 @interface DroneController : NSObject
