@@ -21,6 +21,7 @@ typedef enum DroneActivity_e {
 @protocol DroneControllerDelegate <NSObject>
 
 - (void)droneController:(DroneController *)controller updateTimerFired:(NSTimer *)fired;
+- (void)droneController:(DroneController *)controller batteryUpdated:(NSNumber *)number;
 @end
 
 @interface DroneController : NSObject

@@ -34,13 +34,31 @@
     self.localClient = [[LocalClient alloc] initWithController:self];
     self.localClient.delegate = self;
     
+    [self.localClient lookForPeers];
     [self setupPressForPin];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.localClient lookForPeers];
+    
+    MKCoordinateRegion mapRegion;
+    mapRegion.center = self.droneMap.userLocation.coordinate;
+    mapRegion.span.latitudeDelta = 0.001;
+    mapRegion.span.longitudeDelta = 0.001;
+    [self.droneMap setRegion:mapRegion];
+}
+
+- (MKPointAnnotation *)lastDronePosition
+{
+    static MKPointAnnotation *position;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        position = [[MKPointAnnotation alloc] init];
+        [self.droneMap addAnnotation:position];
+    });
+    
+    return position;
 }
 
 - (void)setupPressForPin
@@ -76,8 +94,8 @@ didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     MKCoordinateRegion mapRegion;
     mapRegion.center = mapView.userLocation.coordinate;
-    mapRegion.span.latitudeDelta = 0.0005;
-    mapRegion.span.longitudeDelta = 0.0005;
+    mapRegion.span.latitudeDelta = 0.005;
+    mapRegion.span.longitudeDelta = 0.005;
     
     //[mapView setRegion:mapRegion animated: YES];
 }
@@ -101,17 +119,7 @@ didUpdateUserLocation:(MKUserLocation *)userLocation
     return annView;
 }
 
-- (MKPointAnnotation *)lastDronePosition
-{
-    static MKPointAnnotation *position;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        position = [[MKPointAnnotation alloc] init];
-        [self.droneMap addAnnotation:position];
-    });
-    
-    return position;
-}
+
 
 #pragma mark - LocalClientDelegate
 
@@ -129,10 +137,19 @@ didUpdateUserLocation:(MKUserLocation *)userLocation
         self.droneStatusConnectionLabel.textColor = [UIColor redColor];
     }
 }
+
 - (void)localClient:(LocalClient *)client didReceiveLocation:(CLLocation *)coordinate
 {
     MKPointAnnotation *annot = self.lastDronePosition;
     annot.coordinate = coordinate.coordinate;
+}
+
+- (void)didReceiveBatteryInfo:(NSNumber *)battery
+{
+    NSString *percentString = [NSString stringWithFormat:@"%@ %%", battery];
+    self.labelBatteryPercent.text = percentString;
+    self.labelBatteryPercent.textColor = battery.intValue < 35 ? [UIColor redColor] : [UIColor greenColor];
+    
 }
 
 #pragma mark - actions

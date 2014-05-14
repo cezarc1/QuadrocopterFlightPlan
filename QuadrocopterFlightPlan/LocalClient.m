@@ -56,7 +56,6 @@
     } else {
          NSLog(@"[Error] %@", err);
     }
-
 }
 
 #pragma mark - MCNearbyServiceBrowserDelegate
@@ -80,12 +79,15 @@
     NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
     
      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-         NSNumber* latitude = result[@"latitude"];
-         NSNumber* longitude = result[@"longitude"];
+         NSNumber *latitude = result[@"latitude"];
+         NSNumber *longitude = result[@"longitude"];
+         NSNumber *batteryLevel = result[@"battery"];
          
          if ([latitude isKindOfClass:[NSNumber class]] && [longitude isKindOfClass:[NSNumber class]]) {
              CLLocation* location = [[CLLocation alloc] initWithLatitude:latitude.doubleValue longitude:longitude.doubleValue];
              [self.delegate localClient:self didReceiveLocation:location];
+         } else if ([batteryLevel isKindOfClass:[NSNumber class]] ) {
+             [self.delegate didReceiveBatteryInfo:batteryLevel];
          }
      }];
 }

@@ -221,7 +221,8 @@ static int const baseRefCommand = 0x11540000;
 - (void)setupDefaults
 {
     [self setConfigurationKey:@"general:navdata_demo" toString:@"FALSE"];
-    [self setConfigurationKey:@"control:altitude_max" toString:@"3000"];
+    [self setConfigurationKey:@"control:altitude_max" toString:@"4000"];
+    [self setConfigurationKey:@"control:altitude_min" toString:@"500"];
     [self setConfigurationKey:@"control:flying_mode" toString:@"1000"];
 
     [self sendCommand:@"COMWDG" arguments:nil]; // WatchDog timer

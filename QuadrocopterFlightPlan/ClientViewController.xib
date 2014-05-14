@@ -9,6 +9,7 @@
                 <outlet property="DroneMap" destination="xaV-Ml-5Hj" id="yfW-4q-4ig"/>
                 <outlet property="droneMap" destination="xaV-Ml-5Hj" id="Tv8-A7-EAW"/>
                 <outlet property="droneStatusConnectionLabel" destination="zZM-Db-lnH" id="Rfz-mF-vhI"/>
+                <outlet property="labelBatteryPercent" destination="l9E-Jx-vmJ" id="E3J-oa-e3J"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -88,6 +89,13 @@
                         <action selector="resetPressed:" destination="-1" eventType="touchUpInside" id="0sI-KK-yZK"/>
                     </connections>
                 </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 %" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9E-Jx-vmJ">
+                    <rect key="frame" x="116" y="472" width="78" height="62"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="26"/>
+                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

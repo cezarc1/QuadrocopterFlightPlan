@@ -5,6 +5,7 @@
 #import "DroneController.h"
 #import "DroneCommunicator.h"
 #import "Navigator.h"
+#import "DroneNavigationState.h"
 
 #define kQFPDroneDegreesDifferenceToGoFoward 65.
 #define kQFPDroneMaxSpeedFoward 0.35
@@ -12,6 +13,7 @@
 @interface DroneController ()
 
 @property (nonatomic, strong) NSTimer *updateTimer;
+@property (nonatomic, strong) NSTimer *navigationTimer;
 @property (nonatomic, strong) DroneCommunicator *communicator;
 @property (nonatomic, strong) Navigator *navigator;
 
@@ -38,17 +40,29 @@
                                                       selector:@selector(updateTimerFired:)
                                                       userInfo:nil
                                                        repeats:YES];
+    self.navigationTimer = [NSTimer scheduledTimerWithTimeInterval:15
+                                                            target:self
+                                                          selector:@selector(refreshNavigationTimerFired:)
+                                                          userInfo:nil
+                                                           repeats:YES];
+    
+    NSString *key = NSStringFromSelector(@selector(navigationState));
+    [self.communicator addObserver:self
+                        forKeyPath:key
+                           options:0
+                           context:nil];
 }
 
 - (void)stop
 {
     [self.updateTimer invalidate];
+    [self.navigationTimer invalidate];
 }
 
 - (void)updateTimerFired:(NSTimer *)timer;
 {
     [self.delegate droneController:self updateTimerFired:timer];
-
+    
     switch (self.droneActivity) {
         case DroneActivityFlyToTarget:
             [self updateDroneCommands];
@@ -60,6 +74,25 @@
             break;
     }
 }
+
+- (void)refreshNavigationTimerFired:(NSTimer *)timer
+{
+    [self.communicator refreshNavigationData];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+    NSString *key = NSStringFromSelector(@selector(navigationState));
+    if ([keyPath isEqualToString:key]) {
+        
+        [self.delegate droneController:self batteryUpdated:@(self.communicator.navigationState.batteryLevel)];
+    }
+}
+
+
 
 - (void)updateDroneCommands;
 {

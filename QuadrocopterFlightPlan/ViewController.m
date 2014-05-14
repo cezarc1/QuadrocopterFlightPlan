@@ -142,10 +142,18 @@
     
 }
 
+#pragma mark - DroneControllerDelegate
 - (void)droneController:(DroneController *)controller updateTimerFired:(NSTimer *)fired
 {
     [self updateDisplay];
 }
+
+- (void)droneController:(DroneController *)controller batteryUpdated:(NSNumber *)number
+{
+    [self.remoteClient sendDictionaryToAllPeers:@{@"battery": number}];
+}
+
+#pragma mark - Actions
 
 - (IBAction)takeoff:(id)sender {
     [self.droneController takeOff];

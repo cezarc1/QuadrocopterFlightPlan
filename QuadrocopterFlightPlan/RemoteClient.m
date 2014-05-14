@@ -39,7 +39,7 @@
 
 }
 
--(void)setNavigator:(Navigator *)navigator
+- (void)setNavigator:(Navigator *)navigator
 {
     _navigator = navigator;
     
@@ -59,15 +59,25 @@
         CLLocationCoordinate2D loc = self.navigator.lastKnowLocation.coordinate;
         NSDictionary *dict = @{@"latitude": @(loc.latitude),
                                @"longitude": @(loc.longitude)};
-        NSError * err;
-        NSData * jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&err];
+        [self sendDictionaryToAllPeers:dict];
+    }
+}
+
+- (void)sendDictionaryToAllPeers:(NSDictionary *)dict
+{
+    NSError * err;
+    NSData * jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&err];
+    if (!err) {
         if (![self.session sendData:jsonData
                             toPeers:self.session.connectedPeers
                            withMode:MCSessionSendDataReliable
                               error:&err]) {
             NSLog(@"[Error] %@", err);
         }
+    } else {
+        NSLog(@"[Error] %@", err);
     }
+    
 }
 
 #pragma mark - MCNearbyServiceAdvertiserDelegate
@@ -92,14 +102,7 @@ didReceiveInvitationFromPeer:(MCPeerID *)peerID
             
             NSDictionary *dict = @{@"latitude": @(loc.coordinate.latitude),
                                    @"longitude": @(loc.coordinate.longitude)};
-            NSError * err;
-            NSData * jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&err];
-            if (![self.session sendData:jsonData
-                                toPeers:@[peerID]
-                               withMode:MCSessionSendDataReliable
-                                  error:&err]) {
-                NSLog(@"[Error] %@", err);
-            }
+            [self sendDictionaryToAllPeers:dict];
         }
     }
 }

@@ -27,5 +27,6 @@
 @property (nonatomic, strong) MCSession *session;
 
 - (void)startBrowsing;
+- (void)sendDictionaryToAllPeers:(NSDictionary *)dict;
 
 @end

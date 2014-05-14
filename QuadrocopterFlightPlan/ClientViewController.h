@@ -14,4 +14,5 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *droneMap;
 
+@property (weak, nonatomic) IBOutlet UILabel *labelBatteryPercent;
 @end
