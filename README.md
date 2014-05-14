@@ -59,3 +59,6 @@ We accomplish this by using two iOS devices. One devices strapped to the drone a
 * Ability to land, Hover and choose a location which is outside the drone's range.
 * Choosing a new waypoint is done by long pressing on the client map untill a pin appears then tapping "GO".
 
+### License
+This project is released under the MIT License.
+
