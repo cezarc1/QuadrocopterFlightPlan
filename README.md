@@ -1,13 +1,13 @@
-QuadrocopterFlightPlan
+QuadrocopterFlightPlan for iOS
 ======================
 
-Extension on [objc.io](http://www.objc.io/issue-8/)'s Quadrocopter Project
+Extension on [objc.io's Quadrocopter Project](http://www.objc.io/issue-8/)
 
 ###Motivation
 
-This project attempts to add a Flight Plan feature to Parrot's AR Drone. We wanted to accomplish this without Parrot's Flight Recorder.
+This project attempts to add a Flight Plan feature to Parrot's AR Drone. It attempts to accomplish this without Parrot's Flight Recorder.
 
-We accomplish this by using two iOS devices. One devices strapped to the drone and another acting as the "terminal" which the user interacts with.
+This by using two iOS devices: One devices strapped to the drone and another acting as the "terminal" which the user interacts with.
 
 ![Remote Client](https://github.com/ggamecrazy/QuadrocopterFlightPlan/blob/master/Screenshots/Remote_Client.jpg?raw=true)
 ![Local Client](https://github.com/ggamecrazy/QuadrocopterFlightPlan/blob/master/Screenshots/Local_Client.jpg?raw=true)
