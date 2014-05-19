@@ -7,7 +7,7 @@ Extension on [objc.io's Quadrocopter Project](http://www.objc.io/issue-8/)
 
 This project attempts to add a Flight Plan feature to Parrot's AR Drone. It attempts to accomplish this without Parrot's Flight Recorder.
 
-This by using two iOS devices: One devices strapped to the drone and another acting as the "terminal" which the user interacts with.
+This by using two iOS devices: One device strapped to the drone and another acting as the "terminal" which the user interacts with.
 
 ![Remote Client](https://github.com/ggamecrazy/QuadrocopterFlightPlan/blob/master/Screenshots/Remote_Client.jpg?raw=true)
 ![Local Client](https://github.com/ggamecrazy/QuadrocopterFlightPlan/blob/master/Screenshots/Local_Client.jpg?raw=true)
@@ -57,10 +57,9 @@ The Red pin represents the Drone's Position and the Green pin represents the dro
 ```
 
 ### Features
-* Communication between the iOS devices is accomplished via the multipeer connectivity introduced in iOS 7.
+* Communication between the iOS devices is accomplished via the multi-peer connectivity introduced in iOS 7.
 * Ability to land, Hover and choose a location which is outside the drone's range.
-* Choosing a new waypoint is done by long pressing on the client map untill a pin appears then tapping "GO".
+* Choosing a new waypoint is done by long pressing on the client map until a pin appears then tapping "GO".
 
 ### License
 This project is released under the MIT License.
-
